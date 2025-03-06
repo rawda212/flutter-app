@@ -6,15 +6,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int counter = 1;
+  var counter = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blue[50],
       appBar: AppBar(
         leading: Icon(Icons.menu),
         title: Text("Hello World"),
-        backgroundColor: Color(0xFF98FF98),
+        backgroundColor: Colors.teal,
         centerTitle: true,
         actions: [
           Icon(Icons.star),
@@ -24,16 +25,26 @@ class _HomePageState extends State<HomePage> {
                 counter++;
               });
             },
-            icon: Text(counter.toString(), style: TextStyle(fontSize: 18)),
+            icon: Text(counter.toString()),
           ),
         ],
       ),
-      body: Center(
-        child: Text(
-          'Welcome to Home Page',
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        ),
+      body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Container(width: 100, height: 800, color: Colors.blue[100]),
+
+
+          Row(
+            children: [
+              Container(width: 100, height: 100, color: Colors.teal[100]),
+              Container(width: 100, height: 100, color: Colors.pink[100]),
+            ],
+          ),
+
+          Container(width: 100, height: 800, color: Colors.green[100]),
+        ],
       ),
-    );
+    ); //scaffold
   }
 }
