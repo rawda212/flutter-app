@@ -30,21 +30,27 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Container(width: 100, height: 800, color: Colors.pink[100]),
+          Container(width: 100, height: double.infinity, color: Colors.pink[100]),
 
-
-          Row(
-            children: [
-              Container(width: 100, height: 100, color: Colors.teal[100]),
-              Container(width: 100, height: 100, color: Colors.blue[100]),
-            ],
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(width: 100, height: 100, color: Colors.teal[100]),
+                    Container(width: 100, height: 100, color: Colors.blue[100]),
+                  ],
+                ),
+              ],
+            ),
           ),
 
-          Container(width: 100, height: 800, color: Colors.pink[100]),
+          Container(width: 100, height: double.infinity, color: Colors.pink[100]),
         ],
       ),
-    ); //scaffold
+    );
   }
 }
