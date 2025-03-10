@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:pro/login_screen.dart';
 
-import 'package:pro/HomePage.dart';
+import 'package:pro/test_home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,8 +15,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My App',
-      theme: ThemeData(primarySwatch: Colors.red),
-      home: HomePage(), // الصفحة الرئيسية
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        primaryColor: Colors.deepPurple,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+
+      home: LoginScreen(),
     );
   }
 }
