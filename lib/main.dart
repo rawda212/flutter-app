@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pro/login_screen.dart';
+import 'package:pro/massanger_screen.dart';
 
 import 'package:pro/test_home.dart';
 
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home: LoginScreen(),
+      home: MassangerScreen(),
     );
   }
 }
