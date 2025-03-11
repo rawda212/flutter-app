@@ -66,6 +66,14 @@ class MassangerScreenState extends State<MassangerScreen> {
 
   List<Map<String, String>> users = [
     {"name": "Rawda Saleh", "message": "Hello! how are yue", "time": "02:00 pm"},
+    {"name": "Misk", "message": "where where where?", "time": "01:45 pm"},
+    {"name": "Sara ", "message": "Hello! how are yue", "time": "12:30 pm"},
+    {"name": "Mohamed ", "message": "where where where", "time": "11:15 am"},
+    {"name": " Saleh", "message": "Hello! how are yue", "time": "02:00 pm"},
+    {"name": "Ahmed Ali", "message": "where where where?", "time": "01:45 pm"},
+    {"name": "Sara ", "message": "Hello! how are yue", "time": "12:30 pm"},
+    {"name": "Mohamed Adel", "message": "where where where", "time": "11:15 am"},
+    {"name": "rawda Saleh", "message": "Hello! how are yue", "time": "02:00 pm"},
     {"name": "Ahmed Ali", "message": "where where where?", "time": "01:45 pm"},
     {"name": "Sara Mohamed", "message": "Hello! how are yue", "time": "12:30 pm"},
     {"name": "Mohamed Adel", "message": "where where where", "time": "11:15 am"},
@@ -103,7 +111,7 @@ class MassangerScreenState extends State<MassangerScreen> {
                 child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) => statusList(users[index]['name']!),
-                  separatorBuilder: (context, index) => SizedBox(width: 10),
+                  separatorBuilder: (context, index) => SizedBox(width: 5),
                   itemCount: users.length,
                 ),
               ),
