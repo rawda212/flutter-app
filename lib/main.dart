@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pro/bmi_screen.dart';
 import 'package:pro/login_screen.dart';
 import 'package:pro/massanger_screen.dart';
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
 
-      home: MassangerScreen(),
+      home:BmiScreen(),
     );
   }
 }
