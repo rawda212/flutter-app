@@ -17,9 +17,9 @@ Product product;
             children: [
               CircleAvatar(
                 radius: 30,
-                // backgroundImage: NetworkImage(
-                //   "https://cdn.pixabay.com/photo/2016/08/09/17/avater-1577909_640.png",
-                // ),
+                backgroundImage: NetworkImage(
+                  product.thumbnail,
+                ),
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.only(
