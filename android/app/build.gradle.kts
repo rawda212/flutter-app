@@ -3,11 +3,12 @@ plugins {
     id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
+    id("com.google.gms.google-services")
 }
 
 android {
     namespace = "com.example.pro"
-    compileSdk = 34  // تحديد رقم الإصدار مباشرةً بدلًا من flutter.compileSdkVersion
+    compileSdk = 35
     ndkVersion = "29.0.13113456"
 
     compileOptions {
@@ -21,8 +22,8 @@ android {
 
     defaultConfig {
         applicationId = "com.example.pro"
-        minSdk = 21  // حددي الحد الأدنى المطلوب حسب الحاجة
-        targetSdk = 34  // استخدمي أحدث إصدار مدعوم من Flutter وAndroid
+        minSdk = 23
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
     }
