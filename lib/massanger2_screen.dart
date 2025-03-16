@@ -12,59 +12,66 @@ import 'package:pro/models/products_model.dart';
 // }
 
 class Massanger2Screen extends StatefulWidget {
- const Massanger2Screen({super.key});
- @override
- State<Massanger2Screen> createState() => _Massanger2ScreenState();
+  const Massanger2Screen({super.key});
+  @override
+  State<Massanger2Screen> createState() => _Massanger2ScreenState();
 }
-  // List<Users> users = [
-  //   Users(
-  //     name: "Rawda Saleh",
-  //     message: "my name is Rawda Saleh ",
-  //     time: "02:00 pm",
-  //   ),
-  //   Users(name: "Mhmd", message: "my name is Mhmd", time: "05:00 pm"),
-  //   Users(name: "Misk", message: "my name is Misk", time: "06:00 pm"),
-  //   Users(name: " Saleh", message: "my name is Saleh", time: "09:00 pm"),
-  //   Users(name: "joo", message: "my name is joo", time: "012:00 pm"),
-  //   Users(
-  //     name: "Rawda Saleh",
-  //     message: "my name is Rawda Saleh ",
-  //     time: "02:00 pm",
-  //   ),
-  //   Users(name: "Mhmd", message: "my name is Mhmd", time: "05:00 pm"),
-  //   Users(name: "Misk", message: "my name is Misk", time: "06:00 pm"),
-  //   Users(name: " Saleh", message: "my name is Saleh", time: "09:00 pm"),
-  //   Users(name: "joo", message: "my name is joo", time: "012:00 pm"),
-  //   Users(
-  //     name: "Rawda Saleh",
-  //     message: "my name is Rawda Saleh ",
-  //     time: "02:00 pm",
-  //   ),
-  //   Users(name: "Mhmd", message: "my name is Mhmd", time: "05:00 pm"),
-  //   Users(name: "Misk", message: "my name is Misk", time: "06:00 pm"),
-  //   Users(name: " Saleh", message: "my name is Saleh", time: "09:00 pm"),
-  //   Users(name: "joo", message: "my name is joo", time: "012:00 pm"),
-  // ];
+
+// List<Users> users = [
+//   Users(
+//     name: "Rawda Saleh",
+//     message: "my name is Rawda Saleh ",
+//     time: "02:00 pm",
+//   ),
+//   Users(name: "Mhmd", message: "my name is Mhmd", time: "05:00 pm"),
+//   Users(name: "Misk", message: "my name is Misk", time: "06:00 pm"),
+//   Users(name: " Saleh", message: "my name is Saleh", time: "09:00 pm"),
+//   Users(name: "joo", message: "my name is joo", time: "012:00 pm"),
+//   Users(
+//     name: "Rawda Saleh",
+//     message: "my name is Rawda Saleh ",
+//     time: "02:00 pm",
+//   ),
+//   Users(name: "Mhmd", message: "my name is Mhmd", time: "05:00 pm"),
+//   Users(name: "Misk", message: "my name is Misk", time: "06:00 pm"),
+//   Users(name: " Saleh", message: "my name is Saleh", time: "09:00 pm"),
+//   Users(name: "joo", message: "my name is joo", time: "012:00 pm"),
+//   Users(
+//     name: "Rawda Saleh",
+//     message: "my name is Rawda Saleh ",
+//     time: "02:00 pm",
+//   ),
+//   Users(name: "Mhmd", message: "my name is Mhmd", time: "05:00 pm"),
+//   Users(name: "Misk", message: "my name is Misk", time: "06:00 pm"),
+//   Users(name: " Saleh", message: "my name is Saleh", time: "09:00 pm"),
+//   Users(name: "joo", message: "my name is joo", time: "012:00 pm"),
+// ];
 class _Massanger2ScreenState extends State<Massanger2Screen> {
-  ProductsModel? productsModel;
+  // ProductsModel? productsModel;
 
-
+  List<Product> productsData = [];
+  bool isLoading = true;
   @override
   void initState() {
     super.initState();
-   getProductsFromApiProvider();
+    getProductsFromApiProvider();
   }
+
   Future<void> getProductsFromApiProvider() async {
     ProductsModel? fetchedProducts = await ApiProvider().getProducts();
-    print("==========>${productsModel?.products[0].title}");
+    // print("==========>${productsModel?.products[0].title}");
     setState(() {
-      productsModel = fetchedProducts;
+      // productsModel = fetchedProducts;
+      productsData = fetchedProducts?.products ?? [];
+      isLoading = false;
     });
   }
+
   @override
-  void dispose(){
+  void dispose() {
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +83,7 @@ class _Massanger2ScreenState extends State<Massanger2Screen> {
             CircleAvatar(
               radius: 25,
               // backgroundImage: NetworkImage(
-                // "https://cdn.pixabay.com/photo/2016/08/09/17/avater-1577909_640.png",
+              // "https://cdn.pixabay.com/photo/2016/08/09/17/avater-1577909_640.png",
               // ),
             ),
             SizedBox(width: 10),
@@ -101,50 +108,68 @@ class _Massanger2ScreenState extends State<Massanger2Screen> {
           SizedBox(width: 10),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.grey[300],
-                  borderRadius: BorderRadius.circular(25),
-                ),
-                child: Row(
-                  children: [
-                    Icon(Icons.search),
-                    SizedBox(width: 5),
-                    Text("Search"),
-                  ],
-                ),
-              ),
-              SizedBox(height: 15),
-              SizedBox(
-                height: 120,
-                child: ListView.separated(
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) => StroyItemWidget(
-                    product: productsModel!.products[index],
+      body:
+          isLoading
+              ? Center(child: CircularProgressIndicator())
+              : productsData.isEmpty
+              ? Center(
+                child: Text(
+                  'No products found',
+                  style: TextStyle(
+                    color: Colors.red,
+                    fontSize: 40,
+                    fontWeight: FontWeight.bold,
                   ),
-                  separatorBuilder: (context, index) => SizedBox(width: 10),
-                  itemCount: 15,
+                ),
+              )
+              : Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius: BorderRadius.circular(25),
+                        ),
+                        child: Row(
+                          children: [
+                            Icon(Icons.search),
+                            SizedBox(width: 5),
+                            Text("Search"),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      SizedBox(
+                        height: 120,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder:
+                              (context, index) =>
+                                  StroyItemWidget(product: productsData[index]),
+                          separatorBuilder:
+                              (context, index) => SizedBox(width: 10),
+                          itemCount: productsData.length,
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                      ListView.separated(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: productsData.length,
+                        itemBuilder:
+                            (context, index) =>
+                                ChatItemWidget(product: productsData[index]),
+                        separatorBuilder:
+                            (context, index) => SizedBox(height: 10),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              SizedBox(height: 15),
-              ListView.separated(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: productsModel!.products.length,
-                itemBuilder: (context, index) => ChatItemWidget(product: productsModel!.products[index],),
-                separatorBuilder: (context, index) => SizedBox(height: 10),
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
